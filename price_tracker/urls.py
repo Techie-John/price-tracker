@@ -17,12 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
+from app.views import LocationViewSet, PricePointViewSet, FoodItemViewSet, SubscriptionViewSet
 
 router = routers.DefaultRouter()
-router.register(r'locations', include('app.urls'))
-router.register(r'pricepoints', include('app.urls'))
-router.register(r'fooditems', include('app.urls'))
-router.register(r'subscriptions', include('app.urls'))
+router.register(r'locations', LocationViewSet, basename='location')
+router.register(r'pricepoints', PricePointViewSet, basename='pricepoint')
+router.register(r'fooditems', FoodItemViewSet, basename='fooditem')
+router.register(r'subscriptions', SubscriptionViewSet, basename='subscription')
+
 
 
 urlpatterns = [
